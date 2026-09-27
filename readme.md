@@ -212,8 +212,8 @@ Interactive Swagger docs are auto-generated at `/docs` and `/redoc` once the app
 ### Quick start (Docker Compose)
 
 ```bash
-git clone https://github.com/ThakurPradeepRawat/PSBACKEND.git
-cd PSBACKEND
+git clone https://github.com/ThakurPradeepRawat/Scalable-URL-Shortener-.git
+cd UrlShortner
 cp .env.example .env        # fill in DB/Redis credentials
 docker compose up --build
 ```
@@ -248,7 +248,7 @@ uvicorn app.main:app --reload --port 8000
 ## 📁 Project Structure
 
 ```
-PSBACKEND/
+UrlShortner/
 ├── app/
 │   ├── main.py              # FastAPI app entrypoint
 │   ├── api/
