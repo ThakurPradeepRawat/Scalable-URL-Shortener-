@@ -1,6 +1,6 @@
 from schemas.urls import LongUrlRequest
 from repositiory.urls import MakeShortRepo
-class shortUrl:
+class shortUrlService:
     def __init__(self , repo:MakeShortRepo):
         self.repo = repo 
 
