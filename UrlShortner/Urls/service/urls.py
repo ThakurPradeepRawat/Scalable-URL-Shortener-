@@ -9,3 +9,7 @@ class shortUrl:
         # short url logic 
         short_code = ""
         return self.repo.Enter_short(long_url , short_code)
+class getUrl : 
+    def __init__(self , repo : MakeShortRepo):
+        self.repo = repo
+    
