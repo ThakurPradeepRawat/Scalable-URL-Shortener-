@@ -1,18 +1,23 @@
+from collections.abc import Generator
+
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker, DeclarativeBase
+from sqlalchemy.orm import DeclarativeBase, Session, sessionmaker
 
-DATABASE_URL = ""
+from core.config import settings
 
-engine = create_engine(DATABASE_URL)
+engine = create_engine(settings.database_url, pool_size=10,
+    max_overflow=20,
+    pool_timeout=30,  pool_pre_ping=True)
+SessionLocal = sessionmaker(bind=engine, autoflush=False, autocommit=False)
 
-local_session = sessionmaker(bind=engine,autoflush = False , autocommit = False )
 
 class Base(DeclarativeBase):
-    pass 
+    pass
 
-def get_db():
-    db = local_session()
-    try :
-        yield db 
-    finally :
+
+def get_db() -> Generator[Session, None, None]:
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
         db.close()
